@@ -1,25 +1,26 @@
 package hello.core.order;
 
-import hello.core.discount.DiscountPolicy;
-import hello.core.discount.RateDiscountPolicy;
-import hello.core.member.*;
+
+import hello.core.member.Grade;
+import hello.core.member.Member;
+import hello.core.member.MemberService;
+import hello.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class OrderServiceTest {
-    private OrderService orderService = new OrderServiceImpl();
-    private DiscountPolicy discountPolicy = new RateDiscountPolicy();
-    private MemberRepository memberRepository = new MemoryMemberRepository();
-    private MemberService memberService = new MemberServiceImpl();
+
+    MemberService memberService = new MemberServiceImpl();
+    OrderService orderService = new OrderServiceImpl();
+
     @Test
     void createOrder() {
-        //given
-        Member member = new Member(1L, "memberA", Grade.VIP);
-        Member findMember = memberRepository.findById(1L);
-        int discountPrice = discountPolicy.discount(findMember, 20000);
-        //when
-        Order order = orderService.createOrder(member.getId(), "itemA", 20000);
-        //then
-        Assertions.assertThat(order.calculatePrice()).isEqualTo(2000);
+        Long memberId = 1L;
+        Member member = new Member(memberId, "memberA", Grade.VIP);
+        memberService.join(member);
+
+        Order order = orderService.createOrder(memberId, "itemA", 10000);
+
+        Assertions.assertThat(order.getDiscountPrice()).isEqualTo(1000);
     }
 }
