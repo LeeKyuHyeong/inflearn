@@ -1,7 +1,7 @@
 package hello.core.member;
 
 public class MemberServiceImpl implements MemberService {
-
+    //MemberServiceImpl에는 MemoryMemberRepository가 없다!
     private final MemberRepository memberRepository;
 
     public MemberServiceImpl(MemberRepository memberRepository) {

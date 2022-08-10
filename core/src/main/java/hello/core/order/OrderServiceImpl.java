@@ -8,10 +8,15 @@ import hello.core.member.MemberRepository;
 import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
+    //여기서도 Memory레파지토리랑 Fix할인정책 전혀 없다 DIP지키는중 의존관계주입 Dependency Injection Policy
+    //역할 구분 잘 되있는 코드 (관심사 분리)
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private DiscountPolicy discountPolicy;
-
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
