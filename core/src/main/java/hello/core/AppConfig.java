@@ -27,8 +27,8 @@ public class AppConfig {
 
     @Bean
     public DiscountPolicy discountPolicy() {
-        return new FixDiscountPolicy();
-        //return new RateDiscountPolicy();
+        //return new FixDiscountPolicy();
+        return new RateDiscountPolicy();
         //기존의 클라이언트 코드에 변경없이 갈아끼우기 가능 ocp open close policy
     }
     @Bean
