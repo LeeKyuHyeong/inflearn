@@ -30,6 +30,7 @@ public class ComponentFilterAppConfigTest {
     @ComponentScan(
             includeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyIncludeComponent.class),
             excludeFilters = @Filter(type = FilterType.ANNOTATION, classes = MyExcludeComponent.class)
+
     )
     static class ComponentFilterAppConfig {
 

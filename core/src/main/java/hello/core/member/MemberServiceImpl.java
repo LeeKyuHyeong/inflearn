@@ -3,7 +3,7 @@ package hello.core.member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component("memberService2")
+@Component("service")
 public class MemberServiceImpl implements MemberService {
     //MemberServiceImpl에는 MemoryMemberRepository가 없다!
     private final MemberRepository memberRepository;

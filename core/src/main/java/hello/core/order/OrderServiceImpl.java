@@ -9,7 +9,7 @@ import hello.core.member.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component("service")
 public class OrderServiceImpl implements OrderService{
     //여기서도 Memory레파지토리랑 Fix할인정책 전혀 없다 DIP지키는중 의존관계주입 Dependency Injection Policy
     //역할 구분 잘 되있는 코드 (관심사 분리)
