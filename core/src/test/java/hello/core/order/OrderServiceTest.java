@@ -32,11 +32,6 @@ public class OrderServiceTest {
     }
     @Test
     void fieldInjectionTest() {
-        OrderServiceImpl orderService = new OrderServiceImpl();
 
-        orderService.setMemberRepository(new MemoryMemberRepository());
-        orderService.setDiscountPolicy(new FixDiscountPolicy());
-
-        orderService.createOrder(1L, "itemA", 1000);
     }
 }
