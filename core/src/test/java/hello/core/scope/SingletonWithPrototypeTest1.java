@@ -2,6 +2,7 @@ package hello.core.scope;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -46,7 +47,7 @@ public class SingletonWithPrototypeTest1 {
         //private final PrototypeBean prototypeBean;  //생성시점에 주입
 
         @Autowired
-        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private ObjectFactory<PrototypeBean> prototypeBeanFactory;
 
 //        @Autowired
 //        public ClientBean(PrototypeBean prototypeBean) {
@@ -54,7 +55,7 @@ public class SingletonWithPrototypeTest1 {
 //        }
 
         public int logic() {
-            PrototypeBean prototypeBean = prototypeBeanProvider.getObject();
+            PrototypeBean prototypeBean = prototypeBeanFactory.getObject();
             prototypeBean.addCnt();
             return prototypeBean.getCnt();
         }
